@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/to_do.dart';
 void main() {
@@ -9,7 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ToDoPage(),
     );
   }
