@@ -3,7 +3,7 @@ import 'package:todo_app/utils/button.dart';
 
 class Dialogbox extends StatelessWidget {
   final controller;
-  VoidCallback onSave;
+  final VoidCallback onSave;
   Dialogbox({super.key, required this.controller,
               required this.onSave,
               });
