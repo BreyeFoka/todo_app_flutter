@@ -15,7 +15,12 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.lightBlue),
+      theme: ThemeData(
+      useMaterial3: true, // Opt into Material 3
+      colorScheme: ColorScheme.fromSwatch(
+      primarySwatch: Colors.yellow, // Generate a color scheme from the swatch
+  ),
+),
     );
   }
 }
