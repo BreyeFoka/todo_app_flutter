@@ -11,6 +11,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List toDoList = [
+      ["Buy Food", false],
+      ["Exercise", false],
+  ];
+  
+  void checkBoxChanged(bool? value, int index){
+      setState(() {
+        toDoList[index][1] = !toDoList[index][1];
+      });
+  }
+
+  void createNewTask(){
+    showDialog(
+      context: context, 
+      builder: (context) {
+          return AlertDialog();
+      });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,21 +38,20 @@ class _HomePageState extends State<HomePage> {
         title: Center(child: Text("To-Do")),
         elevation: 0,
       ),
-      body: ListView(
-        children: [
-          ToDoTile(
-            taskCompleted: false,
-            taskName: "Make Tutorial",
-            onChanged: (p0) => {},
-          ),
-          ToDoTile(
-            taskCompleted: false,
-            taskName: "Do maths Exercises",
-            onChanged: (p0) => {},
-          ),
-
-        ],
+      floatingActionButton: FloatingActionButton(
+      onPressed: createNewTask,
+      child: Icon(Icons.add),),
+      body: ListView.builder(
+         itemCount: toDoList.length,
+         itemBuilder: (context, index) {
+            return ToDoTile(
+              taskName: toDoList[index][0], 
+              taskCompleted: toDoList[index][1],
+               onChanged: (value)=> checkBoxChanged(value, index),
+            );
+         },
       ),
+
     );
   }
 }
