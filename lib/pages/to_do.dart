@@ -13,8 +13,9 @@ class _ToDoPageState extends State<ToDoPage> {
   //Text editing controller to  get access to user input
   TextEditingController myController=TextEditingController();
   void greetUser(){
+    String username=myController.text;
     setState(() {
-        greetingMessage="Hello ${myController.text}";
+        greetingMessage="Hello ${username}";
     });
     
   }
